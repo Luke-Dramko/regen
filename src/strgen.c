@@ -111,14 +111,19 @@ char * registry(struct token * subtree, char * string, unsigned long * next, uns
  "next" afterword.
  */
 char * charclass0(struct token * subtree, char * string, unsigned long * next, unsigned long * arrlen) {
-    if (next == arrlen - 2) {  //The extra space is for the terminal null character
-        *arrlen = *arrlen * 2;
-        string = realloc(string, *arrlen * sizeof(char));
+    if (*next == *arrlen - 2) {
+        *arrlen *= 2;
+        string = (char *)realloc(string, *arrlen * sizeof(char));
         if (string == NULL) { printf("realloc failure.\n"); exit(1); }
     }
+    //printf("subtree->element %p %s\n", subtree->element, (char *)(subtree->element));
+    
     //Select a single random character from the character class and add it to the string.
     string[*next] = ((char *)(subtree->element))[random_in(0, subtree->length)];
     *next = *next + 1;
+    
+    printf("string = %p, %s\n", string, string);
+    
     return string;
 }
 
