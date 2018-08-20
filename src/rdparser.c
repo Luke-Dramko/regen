@@ -197,7 +197,7 @@ struct token * parse_regex(const char * regex, unsigned long length, int * r) {
  This function generates a character class from notation provided in the regex.  Character classes can be defined
  with the notation [...].  There are 3 special values supported inside a character class: a-z, A-Z, and 0-9.  They
  define the lower case alphabet, the upper case alphabet, and the digits, respectively.  Anything else inside the
- character class (escept escapes, see below) literally.
+ character class (escept escapes, see below) is interpreted literally.
  Examples: [a-z], [a-z0-9], [89hjq], [gt&*+a-z]
  
  The escape character treats the next character in the expression literally, disregarding its value as a special
