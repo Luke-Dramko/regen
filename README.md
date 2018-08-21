@@ -26,7 +26,7 @@ _Examples_<br>
 &nbsp;&nbsp;&nbsp;`[A-Z~1+]`<br>
 &nbsp;&nbsp;&nbsp;`[a-zA-Z0-9]`<br>
 A single character with no special syntactic meaning is interpreted as a character class.<br>
-The escape character (`\`) turns a character with special syntactic meaning  into a character class.  It can also be used on characters without special syntatic meaning, which has no effect (escapes for invisible characters may be implemented later).
+The escape character (`\`) turns a character with special syntactic meaning into a character class.  It can also be used on characters without special syntatic meaning, which has no effect (escapes for invisible characters may be implemented later).
 
 The `^` character can be placed as the first character after `[` inside a character class to negate the character class.  That class will then inclulde all visible characters in the ascii character set except those listed after the `^`.<br>
 _Examples_<br>
@@ -40,7 +40,7 @@ _Example_<br>
 _Example_<br>
 &nbsp;&nbsp;&nbsp;`[0-9]+` -> 09983
 
-`?` operates on a signle character class and may or may not include it in the ouput (50/50 chance).<br>
+`?` operates on a single character class and may or may not include it in the ouput (50/50 chance).<br>
 _Example_<br>
 &nbsp;&nbsp;&nbsp;`[abc]?` -> a
 
