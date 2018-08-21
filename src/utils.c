@@ -8,35 +8,10 @@
 
 #include "utils.h"
 
-void free_all(struct token * root) {
-    if (root->code[0] == 0) {
-        printf("-----------------------------\n");
-        printf("character class = %s\n", (char *)(root->element));
-        free(root->element);
-        printf("Character class freed!!!");
-    } else {
-        printf("-----------------------------\n");
-        int i = 0;
-        for (; i < root->length; i++) {
-            printf("From %p\n", root);
-            struct token * temp = ((struct token **)(root->element))[i];
-            free_all(temp);
-        }
-        printf("Freeing element.\n");
-        free(root->element);
-        printf("element freed.\n");
-    }
-    printf("Freeing code.\n");
-    free(root->code);
-    printf("Freeing root.\n");
-    free(root);
-    printf("Done.\n\n");
-    
-}
-
 void print_tree(struct token * root) {
     printf("address = %p\n", root);
     printf("opcode = %d\n", root->code[0]);
+    printf("  address of opcode = %p\n", root->code);
     if (root->code[0] == 5) {
         printf("n = %d\n", root->code[1]);
     } else if (root->code[0] == 6) {
@@ -46,8 +21,10 @@ void print_tree(struct token * root) {
     printf("length = %lu\n", root->length);
     if (root->code[0] == 0) {
         printf("character class = %s\n", (char *)(root->element));
+        printf("  address of character class = %p\n", root->element);
         printf("-----------------------------\n");
     } else {
+        printf("  address of element array = %p\n", root->element);
         printf("-----------------------------\n");
         int i = 0;
         for (; i < root->length; i++) {

@@ -15,7 +15,6 @@ void grpSymChk(const char *, unsigned long length);
 float random_float(void);
 unsigned long random_in(unsigned long low, unsigned long high);
 void free_tree(struct token *);
-void free_all(struct token *);
 void help_message(void);
 
 #endif /* utils_h */

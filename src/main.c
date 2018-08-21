@@ -166,7 +166,7 @@ int main(int argc, const char * argv[]) {
     }
     
     //Free stuff
-    free_all(parsed_regex);
+    free_tree(parsed_regex);
     
     return 0;
 }
