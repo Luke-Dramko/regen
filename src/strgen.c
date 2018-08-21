@@ -116,14 +116,10 @@ char * charclass0(struct token * subtree, char * string, unsigned long * next, u
         string = (char *)realloc(string, *arrlen * sizeof(char));
         if (string == NULL) { printf("realloc failure.\n"); exit(1); }
     }
-    //printf("subtree->element %p %s\n", subtree->element, (char *)(subtree->element));
     
     //Select a single random character from the character class and add it to the string.
     string[*next] = ((char *)(subtree->element))[random_in(0, subtree->length)];
     *next = *next + 1;
-    
-    printf("string = %p, %s\n", string, string);
-    
     return string;
 }
 
@@ -142,7 +138,7 @@ char * doinorder1(struct token * subtree, char * string, unsigned long * next, u
  */
 char * plus2(struct token * subtree, char * string, unsigned long * next, unsigned long * arrlen) {
     do {
-        registry(((struct token *(*))(subtree->element))[0], string, next, arrlen);
+        string = registry(((struct token *(*))(subtree->element))[0], string, next, arrlen);
     } while(continue_value > random_float());
     
     return string;
@@ -153,7 +149,7 @@ char * plus2(struct token * subtree, char * string, unsigned long * next, unsign
  */
 char * star3(struct token * subtree, char * string, unsigned long * next, unsigned long * arrlen) {
     while(continue_value > random_float()) {
-       registry(((struct token *(*))(subtree->element))[0], string, next, arrlen);
+       string = registry(((struct token *(*))(subtree->element))[0], string, next, arrlen);
     }
     return string;
 }
@@ -163,7 +159,7 @@ char * star3(struct token * subtree, char * string, unsigned long * next, unsign
  */
 char * questionmark4(struct token * subtree, char * string, unsigned long * next, unsigned long * arrlen) {
     if (random_float() > 0.5) {
-        registry(((struct token *(*))(subtree->element))[0], string, next, arrlen);
+        string = registry(((struct token *(*))(subtree->element))[0], string, next, arrlen);
     }
     return string;
 }
@@ -174,7 +170,7 @@ char * questionmark4(struct token * subtree, char * string, unsigned long * next
 char * exactlyn5(struct token * subtree, char * string, unsigned long * next, unsigned long * arrlen) {
     unsigned long i = 0;
     for (; i < subtree->code[1]; i++) {
-        registry(((struct token *(*))(subtree->element))[0], string, next, arrlen);
+        string = registry(((struct token *(*))(subtree->element))[0], string, next, arrlen);
     }
     return string;
 }
@@ -186,7 +182,7 @@ char * betweennm6(struct token * subtree, char * string, unsigned long * next, u
     unsigned long i = 0;
     unsigned long max = random_in(subtree->code[1], subtree->code[2] + 1);
     for (; i < max; i++) {
-        registry(((struct token *(*))(subtree->element))[0], string, next, arrlen);
+        string = registry(((struct token *(*))(subtree->element))[0], string, next, arrlen);
     }
     return string;
 }
@@ -195,6 +191,6 @@ char * betweennm6(struct token * subtree, char * string, unsigned long * next, u
  Calls one of the elements in the subtree
  */
 char * or7(struct token * subtree, char * string, unsigned long * next, unsigned long * arrlen) {
-    registry(((struct token *(*))(subtree->element))[random_in(0, subtree->length)], string, next, arrlen);
+    string = registry(((struct token *(*))(subtree->element))[random_in(0, subtree->length)], string, next, arrlen);
     return string;
 }
