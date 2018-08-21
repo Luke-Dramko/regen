@@ -6,11 +6,15 @@
 	<dict>
 		<key>regen.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
 		<key>rgxgen.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
@@ -18,6 +22,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>1A2BE2DA20FF85ED0089C0E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1A2BE2F621001CCB0089C0E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
