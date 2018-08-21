@@ -150,9 +150,6 @@ int main(int argc, const char * argv[]) {
     int position = 0;
     struct token * parsed_regex = parse_regex(regex, length, &position);
     
-    printf("*************** Done parsing ******************\n");
-    print_tree(parsed_regex); ///Debugging
-    
     //Generate the string and write it to the screen/file
     for (i = 0; i < lines; i++) {
         char * str = generate_string(parsed_regex, cont);

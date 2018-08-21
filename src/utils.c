@@ -113,34 +113,26 @@ unsigned long random_in(unsigned long low, unsigned long high) {
  */
 void free_tree(struct token * subtree) {
     unsigned long i = 0;
-    printf("Freeing.  code=%d\n", subtree->code[0]);
     if (subtree->code[0] == 0) {
-        printf("Character class = %s\n", (char *)subtree->element);
         free(subtree->element);
-        printf("Character class freed.\n");
     } else {
         for (; i < subtree->length; i++) {
             free_tree(((struct token **)(subtree->element))[i]);
         }
-        printf("Freeing element\n");
         free(subtree->element);
-        printf("Element freed.\n");
     }
-    printf("Freeing the code.\n");
     free(subtree->code);
-    printf("Freeing the NODE.\n");
     free(subtree);
-    printf("NODE freed.\n\n");
 }
 
 void help_message() {
-    printf("Usage:\n\nrgen [OPTIONS] [PATTERN] [OPTIONS]\n\n");
-    printf("rgen is a utility that helps with visualizing regular expressions.  It interprets\n");
+    printf("Usage:\n\nregen [OPTIONS] [PATTERN] [OPTIONS]\n\n");
+    printf("regen is a utility that helps with visualizing regular expressions.  It interprets\n");
     printf("the pattern [PATTERN] and uses it to generate a string that the regular expression could\n");
     printf("match.\n\n");
     printf("Examples can be written out to a file, specified by a second argument or with the flag -f.\n\n");
     printf("Options\n\n");
-    printf("  -d By default, rgen uses the current time as a seed for random number generation to give seemingly\n");
+    printf("  -d By default, regen uses the current time as a seed for random number generation to give seemingly\n");
     printf("     more random results.  -d turns this feature off.\n\n");
     printf("  -f must be followed by a file name.  It specifies the file name the output is to be written to.\n");
     printf("     If a second argument provides a file name and -f is used in addition, -f overrides.\n\n");
@@ -152,8 +144,8 @@ void help_message() {
     printf("     given segment.  Choose a number between 0 and 1.  A value closer to 1 will result in more\n");
     printf("     characters for * and +.  The devault value is .90 and the maximum value is %f.\n\n", MAX_DEC_CONT_VALUE);
     printf("Examples\n\n");
-    printf("$ rgen '([a-z]+.)*' -d -o -f out.txt\n");
-    printf("$ rgen '[0-9]*' out.txt -l 20\n\n");
+    printf("$ regen '([a-z]+.)*' -d -o -f out.txt\n");
+    printf("$ regen '[0-9]*' out.txt -l 20\n\n");
     printf("Notes on regular expression syntax and support:\n\n");
     printf("Regular expression syntax varies slightly from language to language.\n");
     printf("The ^ (matches start of string) and $ (matches end of string) characters are not supported as they\n");

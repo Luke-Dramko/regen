@@ -56,8 +56,6 @@ struct token * parse_regex(const char * regex, unsigned long length, int * r) {
                 printf("Parentheses contain nothing.\n");
                 exit(4);
             } else {
-                printf(" <- shallower.\n");
-                
                 *r = *r + 1;
                 parent->element = (void **)children;
                 parent->length = c;
@@ -84,7 +82,6 @@ struct token * parse_regex(const char * regex, unsigned long length, int * r) {
             //Generate a character class
             class = charclass(regex, length, r);
         }
-        printf("After character class: r = %d\n", *r);
         
         /* This section recognizes and interprets various functional opterators (ex. *, +, |).
          Each struct token has 3 components:
@@ -141,10 +138,8 @@ struct token * parse_regex(const char * regex, unsigned long length, int * r) {
                 *r = *r + 1;
                 
                 //The | operator operates on two (or more) char classes.
-                printf("regex[%d] = %c\n", *r, regex[*r]);
                 if (regex[*r] == '(') {
                     *r = *r + 1;
-                    printf("\n  Calling parse_regex: going deeper! -> \n");
                     class = parse_regex(regex, length, r);
                 } else {
                     class = charclass(regex, length, r);
@@ -258,8 +253,6 @@ struct token * charclass(const char * regex, unsigned long length, int * r) {
         while (regex[*r] != ']' && regex[*r] != '\0') {
             //Handles special value a-z inside a character class
             if (*r + 2 < length && regex[*r] == 'a' && regex[*r + 1] == '-' && regex[*r + 2] == 'z') {
-                printf("Entered [a-z]\n");
-                
                 if (numchars + 26 > clen - 1) {
                     clen += 26;
                     chars = (char *)realloc(chars, clen * sizeof(char));
@@ -272,8 +265,6 @@ struct token * charclass(const char * regex, unsigned long length, int * r) {
                 
                 //Handles special value A-Z inside a character class
             } else if (*r + 2 < length && regex[*r] == 'A' && regex[*r + 1] == '-' && regex[*r + 2] == 'Z') {
-                printf("Entered [A-Z]\n");
-                
                 if (numchars + 26 > clen - 1) {
                     clen += 26;
                     chars = (char *)realloc(chars, clen * sizeof(char));
@@ -285,7 +276,6 @@ struct token * charclass(const char * regex, unsigned long length, int * r) {
                 
                 //Handles special value 0-9 inside a character class
             } else if (*r + 2 < length && regex[*r] == '0' && regex[*r + 1] == '-' && regex[*r + 2] == '9') {
-                printf("Entered [0-9]\n");
                 //Resize array if needed.
                 if (numchars + 10 > clen - 1) {
                     clen += 10;
