@@ -94,7 +94,7 @@ int main(int argc, const char * argv[]) {
      Check validity of args and overwrite defaults, where applicable
      */
     if (!regex) {
-        printf("Regular expression needed.\n");
+        printf("Usage:\n\n   regen [OPTIONS] [PATTERN] [OPTIONS]\n\nTry \"regen --help\" for more information.\n");
         exit(2);
     }
     length = strlen(regex);
