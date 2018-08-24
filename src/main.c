@@ -123,9 +123,6 @@ int main(int argc, const char * argv[]) {
     //the cont value (for * and +) must be between 0 and MAX_DEC_CONT_VALUE, inclusive.
     if (indec) {
         cont = atof(indec);
-        printf("boolean = %d\n", cont > MAX_DEC_CONT_VALUE || cont <= 0);
-        printf("boolean = %d\n", cont > MAX_DEC_CONT_VALUE);
-        printf("boolean = %d\n", cont <= 0);
         if (cont > MAX_DEC_CONT_VALUE || cont < 0) {
             printf("Invalid decimal value for -p \"%s\".\n", indec);
             printf("Values must be inside the range [0,%f).\n", MAX_DEC_CONT_VALUE);
