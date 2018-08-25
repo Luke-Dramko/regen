@@ -24,7 +24,7 @@ Examples:<br>
 
 `$ regen '[A-Z]*[^A-Z]{2,6}' -l 35 -f examples.txt`
 
-`$ regen -d -p .60 '(.{4,6})?[A-Z]|(na)?'`
+`$ regen -d -p .60 '(.{4})?[A-Z]|(na)'`
 
 A summary of this information can be found with the command
 
