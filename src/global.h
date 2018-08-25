@@ -21,7 +21,7 @@ struct token {
 #endif
 
 #ifndef NOT_BASE_CHARACTER_SET
-#define NOT_BASE_CHARACTER_SET "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\"`~',./<>?;:[]{}|+=-_)(*&^%$#@!\\ "
+#define NOT_BASE_CHARACTER_SET "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\"`~',./<>?;:[]{}|+=-_)(*&^%$#@!\\"
 #endif
 
 //Standard headers
