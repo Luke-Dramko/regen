@@ -409,6 +409,10 @@ struct token * notcharclass(const char * regex, unsigned long length, int * r) {
 char escape(const char * regex, unsigned long length, int * r) {
     if (regex[*r] == '\\') { //Is an escape character
         if (*r + 1 < length) {
+            if (regex[*r + 1] == 'n') { //Return a newline character
+                *r = *r + 2;
+                return '\n';
+            }
             *r = *r + 2;
             return regex[*r - 1];
         } else {
