@@ -4,7 +4,7 @@ srcdir=src/
 
 all: $(srcdir)main.o $(srcdir)utils.o $(srcdir)rdparser.o $(srcdir)strgen.o
 	gcc $(srcdir)main.o $(srcdir)utils.o $(srcdir)rdparser.o $(srcdir)strgen.o -o regen
-	rm $(srcdir)*.o
+	$(RM) $(srcdir)*.o
 objects: $(srcdir)main.o $(srcdir)utils.o $(srcdir)rdparser.o $(srcdir)strgen.o
 main.o:
 	gcc $(srcdir)main.c -c -o $(srcdir)main.o
@@ -15,5 +15,5 @@ rdparser.o:
 strgen.o:
 	gcc $(srcdir)strgen.c -c -o $(srcdir)strgen.o
 clean:
-	rm regen
-	rm $(srcdir)*.o
+	$(RM) regen
+	$(RM) $(srcdir)*.o

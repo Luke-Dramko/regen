@@ -100,7 +100,11 @@ int main(int argc, const char * argv[]) {
     length = strlen(regex);
     
     if (timerandom) {
-        srand((unsigned int)time(0));
+        unsigned int rand_seed;
+        FILE *handle = fopen("/dev/random", "r");
+        fread(&rand_seed, sizeof(rand_seed), 1, handle);
+        fclose(handle);
+        srand(rand_seed);
     }
     
     if (outflname) {
